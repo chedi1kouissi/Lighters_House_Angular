@@ -1,0 +1,27 @@
+<h2>{{ title }}</h2>
+
+<div class="product-container">
+  <div *ngFor="let produit of produits" class="product-item" [ngClass]="{'indisponible': produit.stock === 0}">
+    <img [src]="produit.currentImage" alt="{{ produit.nom }}" width="100" height="100" 
+         (mouseenter)="changeImage(produit, 1)" 
+         (mouseleave)="changeImage(produit, 0)">
+    
+    <p *ngIf="produit.promo == 0">{{ produit.nom }} <br> Prix: {{ produit.prix }} dt</p>
+    
+    <p *ngIf="produit.promo != 0">
+      <button [ngStyle]="{'color': 'green'}">{{ produit.promo }}%</button>
+      {{ produit.nom }} <br>
+      <span [ngStyle]="{'text-decoration': 'line-through'}">{{ produit.prix }} dt</span>
+      <span>{{ newPrice(produit) }} dt</span>
+    </p>
+    
+    <button [disabled]="!produit.description" (click)="showDetails(produit)">Plus de détails</button>
+    
+    <p *ngIf="produit.stock === 0" style="color: red;">Produit non disponible</p>
+    <button *ngIf="produit.stock > 0">Ajouter au panier</button>
+  </div>
+</div>
+
+<div>
+  <app-product-detail *ngIf="msg" [produit]="msg"></app-product-detail>
+</div>

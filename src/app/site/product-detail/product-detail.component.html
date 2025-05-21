@@ -1,0 +1,28 @@
+<div class="product-detail-card">
+    <div class="product-header">
+        <img [src]="produit.currentImage" alt="{{ produit.nom }}"
+             (mouseenter)="changeImage(produit, 1)" 
+             (mouseleave)="changeImage(produit, 0)">
+        <h2>{{ produit.nom }}</h2>
+    </div>
+
+    <div class="product-info">
+        <div class="price-info">
+            <div *ngIf="produit.promo == 0" class="regular-price">
+                {{ produit.prix }} dt
+            </div>
+            <div *ngIf="produit.promo != 0" class="promo-price">
+                <span class="old-price">{{ produit.prix }} dt</span>
+                <span class="final-price">{{ newPrice(produit) }} dt</span>
+                <span class="promo-tag">-{{ produit.promo }}%</span>
+            </div>
+        </div>
+
+        <div class="description">
+            <p>{{produit.description}}</p>
+        </div>
+
+        <button class="cart-button">Ajouter au panier</button>
+    </div>
+</div>
+<div>

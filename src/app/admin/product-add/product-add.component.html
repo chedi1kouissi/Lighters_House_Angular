@@ -1,0 +1,86 @@
+
+  <div class="container">
+    <h2>Ajouter un produit</h2>
+
+    <form [formGroup]="productAddForm"  (ngSubmit)="onAddProduct()">
+ 
+      <div class="form-group">
+        <label for="name">Nom du produit</label>
+        <input 
+          id="name"
+          type="text"
+          placeholder="Entrez le nom"
+          formControlName="nameControl"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="price">Prix</label>
+        <input 
+          id="price"
+          type="number"
+          placeholder="Entrez le prix en DT"
+          formControlName="priceControl"
+        >
+      </div>
+
+ 
+      <div class="form-group">
+        <label for="stock">Quantité en stock</label>
+        <input 
+          id="stock"
+          type="number"
+          placeholder="Entrez la quantité en stock"
+          formControlName="qteControl"
+        >
+      </div>
+
+     
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea 
+          id="description"
+          rows="4"
+          placeholder="Entrez la description"
+          formControlName="descControl"
+        ></textarea>
+      </div>
+
+ 
+      <div class="form-group">
+        <label for="image1">Image 1</label>
+        <input 
+          id="image1"
+          type="file"
+          accept="image/*"
+          formControlName="img1Control"
+        >
+      </div>
+
+     
+      <div class="form-group">
+        <label for="image2">Image 2</label>
+        <input 
+          id="image2"
+          type="file"
+          accept="image/*"
+          formControlName="img2Control"
+        >
+      </div>
+
+   
+      <div class="form-group">
+        <label for="category">Catégorie</label>
+        <select 
+          id="category"
+          formControlName="categControl"
+        >
+          <option value="">Choisissez une catégorie</option>
+          <option value="1">Catégorie 1</option>
+          <option value="2">Catégorie 2</option>
+          <option value="3">Catégorie 3</option>
+        </select>
+      </div>
+      <button type="submit" >Ajouter</button>
+    </form>
+  </div>
